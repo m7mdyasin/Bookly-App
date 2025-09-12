@@ -1,5 +1,8 @@
+import 'package:bookly_app/features/home/presntation/views/home_view.dart';
 import 'package:bookly_app/features/splash/presntation/view/widget/transtion_logo.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -23,6 +26,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
     // يشغل الأنيميشن مرة واحدة
     _controller.forward();
+
+    navigateToHome();
   }
 
   @override
@@ -62,5 +67,11 @@ class _SplashViewBodyState extends State<SplashViewBody>
       begin: const Offset(0, 0.3),
       end: Offset.zero,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
+  }
+
+  void navigateToHome() {
+    Future.delayed(const Duration(seconds: 3), () {
+      Get.to(() => HomeView(), transition: Transition.fade);
+    });
   }
 }
