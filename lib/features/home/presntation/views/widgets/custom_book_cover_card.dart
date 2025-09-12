@@ -6,19 +6,15 @@ class CustomBookCoverCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    return SizedBox(
-      height: size.height * .32,
-      width: size.width * .53,
-      child: AspectRatio(
-        aspectRatio: 2.8 / 4,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            image: DecorationImage(
-              image: AssetImage(Assets.testImage),
-              fit: BoxFit.fill,
-            ),
+    return AspectRatio(
+      aspectRatio: 2.8 / 4,
+      child: Container(
+        margin: EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          image: DecorationImage(
+            image: AssetImage(Assets.testImage),
+            fit: BoxFit.fill,
           ),
         ),
       ),
