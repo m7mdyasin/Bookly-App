@@ -7,8 +7,9 @@ class CustomButton extends StatelessWidget {
     required this.backGroundcolor,
     required this.textColor,
     this.borderRadius,
+    required this.text,
   });
-
+  final String text;
   final Color backGroundcolor;
   final Color textColor;
   final BorderRadius? borderRadius;
@@ -25,7 +26,7 @@ class CustomButton extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(4.0),
-        child: Text("19.99 \$", style: Styles.price.copyWith(color: textColor)),
+        child: Text(text, style: Styles.price.copyWith(color: textColor)),
       ),
     );
   }
