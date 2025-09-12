@@ -1,5 +1,6 @@
-import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/presntation/views/widgets/best_seller_card_list_view.dart';
 import 'package:bookly_app/features/home/presntation/views/widgets/custom_app_bar.dart';
+import 'package:bookly_app/features/home/presntation/views/widgets/custom_best_seller_text.dart';
 import 'package:bookly_app/features/home/presntation/views/widgets/featured_books_list_view.dart';
 import 'package:flutter/material.dart';
 
@@ -8,15 +9,22 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CustomAppBar(),
-        FeaturedBooksListView(),
-        Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Text('Best Seller', style: Styles.title),
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomAppBar(),
+              FeaturedBooksListView(),
+              Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: CustomBestSellerText(),
+              ),
+            ],
+          ),
         ),
+        SliverToBoxAdapter(child: BestSellerCardListView()),
       ],
     );
   }
