@@ -16,7 +16,9 @@ class BooklyApp extends StatelessWidget {
       theme: ThemeData.dark(
         // fontFamily: 'Arciform',
       ).copyWith(scaffoldBackgroundColor: kPrimaryColor),
+
       debugShowCheckedModeBanner: false,
+
       home: SplashView(),
     );
   }
