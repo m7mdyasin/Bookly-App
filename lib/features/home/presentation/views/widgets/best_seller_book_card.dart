@@ -13,7 +13,9 @@ class BestSellerBookCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBooksDetailsView);
+        GoRouter.of(
+          context,
+        ).push(AppRouter.kBooksDetailsView, extra: bookModel);
       },
       child: SizedBox(
         height: MediaQuery.of(context).size.height * .2,

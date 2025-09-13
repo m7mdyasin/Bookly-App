@@ -1,4 +1,5 @@
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/box_action.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_app_bar_book_details.dart';
@@ -8,7 +9,7 @@ import 'package:flutter/material.dart';
 
 class BookDetailViewBody extends StatelessWidget {
   const BookDetailViewBody({super.key});
-
+  // final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

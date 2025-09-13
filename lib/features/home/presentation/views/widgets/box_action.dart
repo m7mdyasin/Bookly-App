@@ -18,7 +18,7 @@ class BoxAction extends StatelessWidget {
                 topLeft: Radius.circular(16),
                 bottomLeft: Radius.circular(16),
               ),
-              text: "19.99 \$",
+              text: "Free",
             ),
           ),
           Expanded(
