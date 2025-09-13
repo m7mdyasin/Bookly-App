@@ -8,8 +8,8 @@ import 'package:bookly_app/features/home/presentation/views/widgets/similar_book
 import 'package:flutter/material.dart';
 
 class BookDetailViewBody extends StatelessWidget {
-  const BookDetailViewBody({super.key});
-  // final BookModel bookModel;
+  const BookDetailViewBody({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -26,28 +26,27 @@ class BookDetailViewBody extends StatelessWidget {
                 SizedBox(
                   width: size.width * .4,
                   child: CustomBookCoverCard(
-                    imageUrl:
-                        'https://templates.mediamodifier.com/5dd94342a9b4f1655132f51d/city-dreams-sci-fi-book-cover-maker.jpg',
+                    imageUrl: bookModel.volumeInfo.imageLinks.thumbnail,
                   ),
                 ),
                 const SizedBox(height: 30),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Text(
-                    "That's a Great Question, I'd Love to Tell You",
+                    bookModel.volumeInfo.title!,
                     style: Styles.title,
                     textAlign: TextAlign.center,
                   ),
                 ),
                 Text(
-                  "Elyse Myers(Author)",
+                  bookModel.volumeInfo.authors![0],
                   style: Styles.author,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 7),
                 BookRating(),
                 const SizedBox(height: 35),
-                BoxAction(),
+                BoxAction(bookModel: bookModel),
                 const SizedBox(height: 35),
 
                 Align(

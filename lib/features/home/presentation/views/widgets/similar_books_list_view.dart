@@ -1,9 +1,11 @@
+import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:bookly_app/core/widgets/custom_progress_indicator.dart';
 import 'package:bookly_app/features/home/presentation/manager/simillar%20books/simillar_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_cover_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SimilarBooksListView extends StatelessWidget {
   const SimilarBooksListView({super.key});
@@ -16,11 +18,20 @@ class SimilarBooksListView extends StatelessWidget {
         builder: (context, state) {
           if (state is SimillarBooksSucsses) {
             return ListView.builder(
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return const CustomBookCoverCard(
-                  imageUrl:
-                      'https://templates.mediamodifier.com/5dd94342a9b4f1655132f51d/city-dreams-sci-fi-book-cover-maker.jpg',
+                return GestureDetector(
+                  onTap: () {
+                    GoRouter.of(context).push(
+                      AppRouter.kBooksDetailsView,
+                      extra: state.books[index],
+                    );
+                  },
+                  child: CustomBookCoverCard(
+                    imageUrl:
+                        state.books[index].volumeInfo.imageLinks.thumbnail,
+                  ),
                 );
               },
             );
