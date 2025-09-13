@@ -1,13 +1,14 @@
 import 'package:bookly_app/core/utils/app_router.dart';
-import 'package:bookly_app/core/utils/assits.dart';
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSellerBookCard extends StatelessWidget {
-  const BestSellerBookCard({super.key});
-
+  const BestSellerBookCard({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -22,18 +23,13 @@ class BestSellerBookCard extends StatelessWidget {
             AspectRatio(
               aspectRatio: 2.8 / 4,
               child: Padding(
-                padding: const EdgeInsets.only(left: 12),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(Assets.testImage),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+                padding: const EdgeInsets.all(6.0),
+                child: CustomBookImage(
+                  imageUrl: bookModel.volumeInfo.imageLinks.thumbnail,
                 ),
               ),
             ),
+
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: 30, top: 14),
@@ -43,17 +39,23 @@ class BestSellerBookCard extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * .6,
                       child: Text(
-                        "That's a Great Question, I'd Love to Tell You",
+                        bookModel.volumeInfo.title!,
                         style: Styles.title,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    Text('Elyse Myers(Author)', style: Styles.author),
+                    Text(
+                      getWords(
+                        bookModel.volumeInfo.authors![0].toString(),
+                        count: 3,
+                      ),
+                      style: Styles.author,
+                    ),
                     SizedBox(height: 20),
                     Row(
                       children: [
-                        Text("19.99 \$", style: Styles.price),
+                        Text("free", style: Styles.price),
                         SizedBox(width: MediaQuery.of(context).size.width * .1),
                         BookRating(),
                       ],
@@ -66,5 +68,20 @@ class BestSellerBookCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String getWords(String text, {int count = 3, bool fromEnd = false}) {
+    // نشيل الأقواس
+    String cleanText = text.replaceAll('[', '').replaceAll(']', '');
+
+    // نقسم النص لكلمات
+    List<String> words = cleanText.split(' ');
+
+    // نحدد نجيب أول أو آخر كلمات
+    if (fromEnd) {
+      return words.sublist(words.length - count).join(' ');
+    } else {
+      return words.take(count).join(' ');
+    }
   }
 }
