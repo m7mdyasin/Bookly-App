@@ -11,7 +11,10 @@ class SimilarBooksListView extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return const CustomBookCoverCard();
+          return const CustomBookCoverCard(
+            imageUrl:
+                'https://templates.mediamodifier.com/5dd94342a9b4f1655132f51d/city-dreams-sci-fi-book-cover-maker.jpg',
+          );
         },
       ),
     );

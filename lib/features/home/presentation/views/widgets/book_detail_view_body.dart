@@ -22,7 +22,13 @@ class BookDetailViewBody extends StatelessWidget {
               children: [
                 CustomAppBarBookDetails(),
                 const SizedBox(height: 30),
-                SizedBox(width: size.width * .4, child: CustomBookCoverCard()),
+                SizedBox(
+                  width: size.width * .4,
+                  child: CustomBookCoverCard(
+                    imageUrl:
+                        'https://templates.mediamodifier.com/5dd94342a9b4f1655132f51d/city-dreams-sci-fi-book-cover-maker.jpg',
+                  ),
+                ),
                 const SizedBox(height: 30),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 40),
