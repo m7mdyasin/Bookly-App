@@ -1,5 +1,4 @@
 import 'package:bookly_app/core/utils/app_router.dart';
-import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 import 'package:bookly_app/features/splash/presentation/view/widget/transtion_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
